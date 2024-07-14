@@ -1,26 +1,25 @@
 pipeline {
-   agent any
-      stages {
-         stage('Clone Repository') {
+    agent any
+    stages {
+        stage('Clone Repository') {
             steps {
-               git 'https://github.com/oramoetaro/jenkins_test.git'
+                git branch: 'main', url: 'https://github.com/oramoetaro/jenkins_test.git'
             }
-         }
-         stage('Install Dependencies') {
+        }
+        stage('Install Dependencies') {
             steps {
-               sh 'npm install'
+                sh 'npm install'
             }
-         }
-         stage('Build') {
+        }
+        stage('Build') {
             steps {
-               sh 'npm run build'
+                sh 'npm run build'
             }
-         }
-         stage('Test') {
+        }
+        stage('Test') {
             steps {
-               sh 'npm test'
+                sh 'npm test'
             }
-         }
-      }
+        }
+    }
 }
-
